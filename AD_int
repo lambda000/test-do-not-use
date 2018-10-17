@@ -1,0 +1,17 @@
+#Change Hostname <servername>.atom.olympus.mnt
+
+nmtui  
+
+#Install these
+
+yum -y install realmd sssd ntpdate ntp samba-common-tools
+
+#run the following command. Replace admin_user with admin account.
+
+systemctl enable ntpd.service
+
+ntpdate hydrogen.atom.olympus.mnt
+
+systemctl start ntpd.service
+
+realm join --user=<admin_user>@atom.olympus.mnt atom.olympus.mnt
